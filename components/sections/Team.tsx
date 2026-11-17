@@ -1,42 +1,45 @@
 import { SectionHeading } from "../SectionHeading";
-import { TeamCard } from "../Cards";
-import { TeamCarousel } from "../TeamCarousel";
+import { FounderBio, PersonCard } from "../Cards";
+import { MediaPlaceholder } from "../MediaPlaceholder";
 import { TEAM, TEAM_FOUNDER } from "@/lib/data";
 import { delay } from "@/lib/motion";
 
 /**
- * 04 · Equipo (#equipo): la fundadora destacada + el resto del equipo en un carrusel horizontal.
- * Cada tarjeta lleva al reel de Instagram de la persona.
- * MAQUETA: ver los TODO de lib/data.ts (nombres, roles y links de reels pendientes).
+ * 04 · Equipo (#equipo). Dos escalas: la fundadora en retrato grande (4:5) con su nombre en gran formato,
+ * y el resto del equipo como retratos 3:4 escalonados. Cada retrato lleva al reel de Instagram de la persona.
+ * MAQUETA: ver los TODO de lib/data.ts (nombres, roles, fotos y links de reels pendientes).
  */
 export function Team() {
   return (
-    <section id="equipo" aria-labelledby="tm-title" className="nm-section bg-white">
+    <section id="equipo" aria-labelledby="tm-title" className="nm-section nm-team">
       <div className="nm-container">
-        <div className="nm-reveal mb-9 flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
-          <SectionHeading
-            id="tm-title"
-            className="min-w-0 flex-[1_1_420px]"
-            eyebrow="Equipo"
-            title={<>Conocé a quienes <em>te cuidan.</em></>}
-          />
-          <p className="m-0 flex-[0_1_380px] text-nm-muted">
-            Cada profesional se presenta en un reel de @espacionm. Tocá una tarjeta para verlo en Instagram.
-          </p>
+        <div className="nm-grid nm-founder">
+          <div className="nm-reveal nm-founder__media">
+            <MediaPlaceholder ratio="4/5" label="Retrato de la fundadora" meta="Encuadre vertical 4:5, luz natural" statusLabel="Foto pendiente" />
+          </div>
+          <div style={delay(120)} className="nm-reveal nm-founder__body">
+            <SectionHeading
+              id="tm-title"
+              size="md"
+              eyebrow="Equipo"
+              title={<>Conocé a quienes <em>te cuidan.</em></>}
+            />
+            <FounderBio {...TEAM_FOUNDER} />
+          </div>
         </div>
 
-        <div className="nm-reveal border-t border-nm-border pt-8" style={delay(80)}>
-          <TeamCard {...TEAM_FOUNDER} featured />
-        </div>
-
-        <div className="nm-reveal mt-10" style={delay(120)}>
-          <TeamCarousel>
+        <div className="nm-roster-wrap">
+          <div className="nm-roster-head nm-reveal">
+            <span className="nm-eyebrow">El equipo</span>
+            <p>Cada profesional se presenta en un reel de @espacionm. Tocá un retrato para verlo en Instagram.</p>
+          </div>
+          <ul className="nm-roster" aria-label="Equipo de Espacio NM">
             {TEAM.map((p, i) => (
-              <li key={`${p.name}-${i}`} className="w-[172px] flex-none snap-start md:w-[200px]">
-                <TeamCard {...p} />
+              <li key={`${p.name}-${i}`} className="nm-reveal" style={delay((i % 5) * 70)}>
+                <PersonCard {...p} />
               </li>
             ))}
-          </TeamCarousel>
+          </ul>
         </div>
       </div>
     </section>

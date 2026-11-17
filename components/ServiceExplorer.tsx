@@ -6,7 +6,10 @@ import { Icon } from "./Icon";
 import { StatusBadge } from "./StatusBadge";
 import { WHATSAPP_PLAIN_URL, type ServiceCategory } from "@/lib/data";
 
-/** Pestañas de categorías + grupos de servicios (roles tablist/tab/tabpanel). */
+/**
+ * Índice tipográfico de categorías (roles tablist/tab/tabpanel) + filas por grupo de servicio.
+ * El grupo `featured` (Bodywrap) tiene más escala que el resto.
+ */
 export function ServiceExplorer({ categories, defaultIndex = 0 }: { categories: ServiceCategory[]; defaultIndex?: number }) {
   const [i, setI] = useState(defaultIndex);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -24,8 +27,8 @@ export function ServiceExplorer({ categories, defaultIndex = 0 }: { categories: 
   };
 
   return (
-    <div className="nm-services">
-      <div className="nm-services__tabs" role="tablist" aria-label="Categorías de servicios">
+    <div>
+      <div className="nm-svc__tabs" role="tablist" aria-label="Categorías de servicios">
         {categories.map((c, k) => (
           <button
             key={c.id}
@@ -36,39 +39,42 @@ export function ServiceExplorer({ categories, defaultIndex = 0 }: { categories: 
             aria-selected={k === i}
             aria-controls={`panel-${c.id}`}
             tabIndex={k === i ? 0 : -1}
-            className={`nm-tag${k === i ? " nm-tag--active" : ""}`}
+            className="nm-svc__tab"
             onClick={() => setI(k)}
             onKeyDown={(e) => onKeyDown(e, k)}
           >
+            <span className="nm-svc__tab-n" aria-hidden="true">{String(k + 1).padStart(2, "0")}</span>
             {c.label}
           </button>
         ))}
       </div>
-      <div key={cat.id} className="nm-services__panel" role="tabpanel" id={`panel-${cat.id}`} aria-labelledby={`tab-${cat.id}`}>
+
+      <div key={cat.id} className="nm-svc__panel" role="tabpanel" id={`panel-${cat.id}`} aria-labelledby={`tab-${cat.id}`}>
         {cat.groups.map((g, gi) => (
-          <div key={g.title} className="nm-services__group" style={{ "--i": gi } as CSSProperties}>
-            <div className="nm-services__group-head">
-              <h3 className="nm-services__group-title">{g.title}</h3>
+          <div key={g.title} className={`nm-svc__group${g.featured ? " nm-svc__group--feature" : ""}`} style={{ "--i": gi } as CSSProperties}>
+            <div className="nm-svc__group-head">
               {g.featured && (
-                <span className="nm-services__feature">
+                <span className="nm-svc__feature">
                   <Icon name="sparkles" size={16} />
                   Protagonista
                 </span>
               )}
+              <h3 className="nm-svc__group-title">{g.title}</h3>
               {g.status && <StatusBadge status={g.status}>{g.statusLabel}</StatusBadge>}
             </div>
-            <div className="nm-services__body">
-              <ul className="nm-services__items">
+            <div className="nm-svc__body">
+              <ul className="nm-svc__items">
                 {g.items.map((it) => (
                   <li key={it}>{it}</li>
                 ))}
               </ul>
-              {g.note && <p className="nm-services__note">{g.note}</p>}
+              {g.note && <p className="nm-svc__note">{g.note}</p>}
             </div>
           </div>
         ))}
       </div>
-      <div>
+
+      <div className="nm-svc__cta">
         <Button
           variant="secondary"
           icon="whatsapp"

@@ -1,15 +1,19 @@
+import { Button } from "../Button";
 import { FaqAccordion } from "../FaqAccordion";
 import { SectionHeading } from "../SectionHeading";
-import { FAQ } from "@/lib/data";
+import { WHATSAPP_URL, FAQ } from "@/lib/data";
 import { delay } from "@/lib/motion";
 
-/** 09 · Preguntas frecuentes (#faq). */
+/** 08 · Preguntas frecuentes (#faq): ligera, a ancho completo, con pregunta numerada. */
 export function Faq() {
   return (
-    <section id="faq" aria-labelledby="fq-title" className="nm-section pb-[clamp(88px,10vw,150px)]">
-      <div className="nm-container flex flex-wrap items-start gap-x-[clamp(32px,6vw,72px)] gap-y-8">
-        <SectionHeading id="fq-title" className="nm-reveal min-w-0 flex-[4_1_280px]" eyebrow="Preguntas frecuentes" title={<>Antes de <em>tu turno.</em></>} />
-        <div style={delay(120)} className="nm-reveal min-w-0 flex-[8_1_420px]">
+    <section id="faq" aria-labelledby="fq-title" className="nm-faqs">
+      <div className="nm-container">
+        <div className="nm-reveal nm-faqs__head">
+          <SectionHeading id="fq-title" size="sm" eyebrow="Preguntas frecuentes" title={<>Antes de <em>tu turno.</em></>} />
+          <Button variant="ghost" href={WHATSAPP_URL} icon="whatsapp">¿Otra consulta? Escribinos</Button>
+        </div>
+        <div style={delay(100)} className="nm-reveal">
           <FaqAccordion items={FAQ} />
         </div>
       </div>

@@ -1,66 +1,58 @@
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 
-interface TeamCardProps {
+interface PersonProps {
   name: string;
   role: string;
-  text?: string;
-  /** Link al reel de Instagram de la persona. Si falta, la fila no es clicable. */
+  /** Link al reel de Instagram de la persona. Si falta, el retrato no es clicable. */
   reelUrl?: string;
-  /** Tarjeta destacada (fundadora): arco a la izquierda, texto a la derecha. */
-  featured?: boolean;
 }
 
 const initialOf = (name: string) => name.replace(/^Doc\.\s*/, "").charAt(0).toUpperCase();
 
 /**
- * Persona del equipo.
- * - Por defecto: «slide» del carrusel (inicial en arco + rol + nombre + play). TODA la tarjeta lleva al reel de Instagram.
- * - `featured`: bloque más grande para la fundadora.
+ * Retrato del equipo: rectángulo vertical 3:4 (hoy con la inicial, mañana con la foto) + nombre y rol.
+ * TODO el retrato lleva al reel de Instagram de la persona.
  */
-export function TeamCard({ name, role, text, reelUrl, featured }: TeamCardProps) {
-  const initial = initialOf(name);
-  if (!featured) {
-    const inner = (
-      <>
-        <span className="nm-team-slide__media" aria-hidden="true">
-          {initial}
-          {reelUrl && (
-            <span className="nm-team__play">
-              <Icon name="play" size={16} />
-            </span>
-          )}
-        </span>
-        <span className="nm-team-slide__role">{role}</span>
-        <span className="nm-team-slide__name">{name}</span>
-      </>
-    );
-    return reelUrl ? (
-      <a className="nm-team-slide" href={reelUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver el reel de ${name} en Instagram`}>
-        {inner}
-      </a>
-    ) : (
-      <div className="nm-team-slide">{inner}</div>
-    );
-  }
-  return (
-    <article className="flex flex-wrap items-center gap-x-[clamp(28px,5vw,56px)] gap-y-5">
-      <div className="nm-team__link w-full max-w-[150px] flex-none">
-        <div className="nm-team__initial" aria-hidden="true">{initial}</div>
-      </div>
-      <div className="nm-team__body min-w-0 flex-[1_1_300px] gap-2">
-        <span className="nm-team__role">{role}</span>
-        <h3 className="nm-team__name text-[clamp(28px,3.2vw,40px)] leading-[1.05]">{name}</h3>
-        {text && <p className="nm-team__text">{text}</p>}
+export function PersonCard({ name, role, reelUrl }: PersonProps) {
+  const inner = (
+    <>
+      <span className="nm-person__media" aria-hidden="true">
+        {initialOf(name)}
         {reelUrl && (
-          <div className="pt-1.5">
-            <Button variant="ghost" href={reelUrl} icon="instagram" iconRight="arrow-up-right">
-              Ver su reel
-            </Button>
-          </div>
+          <span className="nm-person__play">
+            <Icon name="play" size={16} />
+          </span>
         )}
-      </div>
-    </article>
+      </span>
+      <span className="nm-person__name">{name}</span>
+      <span className="nm-person__role">{role}</span>
+    </>
+  );
+  return reelUrl ? (
+    <a className="nm-person" href={reelUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver el reel de ${name} en Instagram`}>
+      {inner}
+    </a>
+  ) : (
+    <div className="nm-person">{inner}</div>
+  );
+}
+
+/** Fundadora: texto de la ficha (el retrato va aparte, en la composición de la sección). */
+export function FounderBio({ name, role, text, reelUrl }: PersonProps & { text?: string }) {
+  return (
+    <div className="nm-founder__who">
+      <span className="nm-founder__role">{role}</span>
+      <h3 className="nm-founder__name">{name}</h3>
+      {text && <p className="nm-founder__text">{text}</p>}
+      {reelUrl && (
+        <div>
+          <Button variant="ghost" href={reelUrl} icon="instagram" iconRight="arrow-up-right">
+            Ver su reel
+          </Button>
+        </div>
+      )}
+    </div>
   );
 }
 

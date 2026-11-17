@@ -9,9 +9,10 @@ const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 export function SiteFooter() {
   return (
     <footer className="nm-footer">
+      <div className="nm-footer__rule" aria-hidden="true" />
       <div className="nm-footer__grid">
         <div className="nm-footer__brand">
-          <Logo width={190} />
+          <Logo width={220} />
           <p className="nm-footer__slogan">Tu espacio, tu bienestar.</p>
           <WhatsAppButton variant="on-deep" />
         </div>

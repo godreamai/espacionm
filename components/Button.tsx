@@ -3,7 +3,7 @@ import { Icon } from "./Icon";
 import type { IconName } from "@/lib/icons";
 import { WHATSAPP_URL } from "@/lib/data";
 
-export type ButtonVariant = "primary" | "secondary" | "on-deep" | "outline-on-deep" | "ghost";
+export type ButtonVariant = "primary" | "secondary" | "on-deep" | "outline-on-deep" | "ghost" | "ghost-on-deep";
 export type ButtonSize = "sm" | "md" | "lg";
 
 interface BaseProps {
