@@ -51,7 +51,7 @@ export function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
           </figure>
         ))}
       </div>
-      <div className="mt-10 flex items-center justify-between gap-5 border-t border-nm-teal/25 pt-6">
+      <div className="nm-carousel__bar mt-10 flex items-center max-lg:justify-center lg:justify-between gap-5 border-t border-nm-teal/25 pt-6">
         <span className="font-body text-[15px] tabular-nums tracking-[.1em] text-nm-teal" aria-live="polite">
           {pad(i + 1)} <span className="text-nm-muted">/ {pad(n)}</span>
         </span>

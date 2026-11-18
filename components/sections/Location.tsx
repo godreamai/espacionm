@@ -11,7 +11,7 @@ export function Location() {
       <div className="nm-container">
         <div className="nm-grid nm-loc__grid">
           <div className="nm-reveal nm-loc__info">
-            <SectionHeading id="ub-title" size="sm" eyebrow="Ubicación y horarios" title={<>Te esperamos <em>en Caballito.</em></>} />
+            <SectionHeading id="ub-title" size="sm" title={<>Te esperamos <em>en Caballito.</em></>} />
             <address className="nm-loc__address">
               Otamendi 231<br />Caballito, CABA (C1405)
             </address>
@@ -19,7 +19,7 @@ export function Location() {
               <HoursTable rows={HOURS} />
               <p className="nm-small m-0 pt-4 text-nm-muted">Pagos: efectivo y transferencia.</p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 [&>*]:min-w-[150px] [&>*]:flex-1 sm:[&>*]:flex-none">
               <Button variant="secondary" href={MAPS_URL} icon="navigation">Cómo llegar</Button>
               <WhatsAppButton />
             </div>

@@ -9,7 +9,7 @@ import { INSTAGRAM_URL } from "@/lib/data";
  */
 export function Closing() {
   return (
-    <section id="cierre" aria-labelledby="cl-title" className="nm-close">
+    <section id="cierre" aria-labelledby="cl-title" className="nm-close nm-dome-top">
       <div aria-hidden="true" className="nm-close__arch" />
       <div className="nm-container nm-reveal nm-close__inner">
         <Image src="/tulip-from-logo.png" alt="" width={56} height={54} className="h-auto w-14" />

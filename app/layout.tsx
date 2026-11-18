@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Marcellus, Nunito_Sans } from "next/font/google";
+import { Fraunces, Nunito_Sans } from "next/font/google";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
-// Tipografía final «1e»: Marcellus (títulos, un solo peso) + Nunito Sans (UI y cuerpo).
-const marcellus = Marcellus({ subsets: ["latin"], weight: "400", variable: "--font-marcellus", display: "swap" });
+// Títulos: Fraunces (serif suave de contraste, eje óptico variable). Cuerpo y UI: Nunito Sans.
+const fraunces = Fraunces({ subsets: ["latin"], axes: ["opsz", "SOFT"], variable: "--font-fraunces", display: "swap" });
 const nunito = Nunito_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-nunito", display: "swap" });
 
 const TITLE = "Espacio NM & Bodywrap | Estética, spa y bienestar en Caballito";
@@ -37,8 +37,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${marcellus.variable} ${nunito.variable}`}>
-      <body>
+    <html lang="es-AR" className={`${fraunces.variable} ${nunito.variable}`}>
+      <body suppressHydrationWarning>
         {/* Sin JS el reveal del timeline quedaría oculto: se muestra igual. */}
         <noscript>
           <style>{`.nm-reveal{opacity:1;transform:none}`}</style>

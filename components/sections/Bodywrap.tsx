@@ -12,7 +12,7 @@ import { delay } from "@/lib/motion";
  */
 export function Bodywrap() {
   return (
-    <section id="bodywrap" aria-labelledby="bw-title" className="nm-bw">
+    <section id="bodywrap" aria-labelledby="bw-title" className="nm-bw nm-dome-both">
       <div className="nm-container">
         <div className="nm-grid nm-bw__head">
           <SectionHeading

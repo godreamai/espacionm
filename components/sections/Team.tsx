@@ -15,13 +15,12 @@ export function Team() {
       <div className="nm-container">
         <div className="nm-grid nm-founder">
           <div className="nm-reveal nm-founder__media">
-            <MediaPlaceholder ratio="4/5" label="Retrato de la fundadora" meta="Encuadre vertical 4:5, luz natural" statusLabel="Foto pendiente" />
+            <MediaPlaceholder shape="arch" ratio="4/5" src={TEAM_FOUNDER.photo} position="50% 18%" alt={`Retrato de ${TEAM_FOUNDER.name}`} statusLabel="Imagen generada · provisoria" sizes="(min-width: 1024px) 440px, 100vw" />
           </div>
           <div style={delay(120)} className="nm-reveal nm-founder__body">
             <SectionHeading
               id="tm-title"
               size="md"
-              eyebrow="Equipo"
               title={<>Conocé a quienes <em>te cuidan.</em></>}
             />
             <FounderBio {...TEAM_FOUNDER} />
@@ -30,7 +29,6 @@ export function Team() {
 
         <div className="nm-roster-wrap">
           <div className="nm-roster-head nm-reveal">
-            <span className="nm-eyebrow">El equipo</span>
             <p>Cada profesional se presenta en un reel de @espacionm. Tocá un retrato para verlo en Instagram.</p>
           </div>
           <ul className="nm-roster" aria-label="Equipo de Espacio NM">

@@ -4,5 +4,7 @@ next-env.d.ts
 *.tsbuildinfo
 .env*.local
 
-# Fotos de terceros (living: foto de clienta; salón: ficha de Google). Derechos pendientes: NO publicar en un repo público.
-public/photos/
+# Fotos de terceros sin derechos confirmados (living: foto de clienta; salón: ficha de Google): NO publicar en un repo público.
+# Las imágenes generadas (hero, retratos, ambientes) sí se versionan; son provisorias hasta tener fotos propias.
+public/photos/espacio-recepcion-living.jpg
+public/photos/espacio-salon-parquet.jpg

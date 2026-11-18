@@ -43,7 +43,6 @@ export function ServiceExplorer({ categories, defaultIndex = 0 }: { categories: 
             onClick={() => setI(k)}
             onKeyDown={(e) => onKeyDown(e, k)}
           >
-            <span className="nm-svc__tab-n" aria-hidden="true">{String(k + 1).padStart(2, "0")}</span>
             {c.label}
           </button>
         ))}

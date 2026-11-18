@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Icon } from "./Icon";
 
-/** Acordeón: solo una respuesta abierta a la vez; la primera abierta por defecto (`defaultOpen={-1}` = todas cerradas). */
-export function FaqAccordion({ items, defaultOpen = 0 }: { items: { q: string; a: string }[]; defaultOpen?: number }) {
+/** Acordeón: solo una respuesta abierta a la vez; todas cerradas por defecto (`defaultOpen={0}` abre la primera). */
+export function FaqAccordion({ items, defaultOpen = -1 }: { items: { q: string; a: string }[]; defaultOpen?: number }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="nm-faq">

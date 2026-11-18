@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+import Image from "next/image";
 import { Icon } from "./Icon";
 
 interface PersonProps {
@@ -6,6 +7,8 @@ interface PersonProps {
   role: string;
   /** Link al reel de Instagram de la persona. Si falta, el retrato no es clicable. */
   reelUrl?: string;
+  /** Ruta de la foto (3:4). Si falta, se muestra la inicial. */
+  photo?: string;
 }
 
 const initialOf = (name: string) => name.replace(/^Doc\.\s*/, "").charAt(0).toUpperCase();
@@ -14,11 +17,11 @@ const initialOf = (name: string) => name.replace(/^Doc\.\s*/, "").charAt(0).toUp
  * Retrato del equipo: rectángulo vertical 3:4 (hoy con la inicial, mañana con la foto) + nombre y rol.
  * TODO el retrato lleva al reel de Instagram de la persona.
  */
-export function PersonCard({ name, role, reelUrl }: PersonProps) {
+export function PersonCard({ name, role, reelUrl, photo }: PersonProps) {
   const inner = (
     <>
-      <span className="nm-person__media" aria-hidden="true">
-        {initialOf(name)}
+      <span className={`nm-person__media${photo ? " nm-person__media--photo" : ""}`} aria-hidden="true">
+        {photo ? <Image src={photo} alt="" fill sizes="(min-width: 1024px) 220px, 45vw" style={{ objectFit: "cover", objectPosition: "50% 22%" }} /> : initialOf(name)}
         {reelUrl && (
           <span className="nm-person__play">
             <Icon name="play" size={16} />

@@ -11,13 +11,23 @@ export const INSTAGRAM_URL = "https://www.instagram.com/espacionm/";
 export const MAPS_URL = "https://www.google.com/maps/place/Espacio+NM/@-34.6137481,-58.4324335,17z";
 export const MAP_EMBED_URL = "https://www.google.com/maps?q=-34.6137481,-58.4324335&z=16&output=embed";
 
+// Navbar: solo lo esencial para decidir, en el orden de la página.
 export const NAV_LINKS: [label: string, href: string][] = [
   ["Bodywrap", "#bodywrap"],
   ["Servicios", "#servicios"],
   ["Equipo", "#equipo"],
-  ["El espacio", "#espacio"],
-  ["Opiniones", "#opiniones"],
   ["Ubicación", "#ubicacion"],
+];
+
+// Footer: mapa completo del sitio, en el orden de la página.
+export const FOOTER_LINKS: [label: string, href: string][] = [
+  ["Bodywrap", "#bodywrap"],
+  ["Servicios", "#servicios"],
+  ["Equipo", "#equipo"],
+  ["Opiniones", "#opiniones"],
+  ["El espacio", "#espacio"],
+  ["Ubicación", "#ubicacion"],
+  ["Preguntas frecuentes", "#faq"],
 ];
 
 export const HOURS: [day: string, hours: string][] = [
@@ -117,18 +127,19 @@ export const SERVICES: ServiceCategory[] = [
  *  - Sin apellidos (salvo la Doc. Liloff), matrículas ni títulos que no estén confirmados.
  */
 export const TEAM_FOUNDER = {
-  name: "Nombre de la fundadora", // TODO
+  name: "Nati Marotta",
   role: "Fundadora de Espacio NM",
   text: "Acá va una frase breve sobre cómo nació Espacio NM.", // TODO: texto real
   reelUrl: INSTAGRAM_URL, // TODO: link del reel
+  photo: "/photos/fundadora.png", // imagen generada, provisoria: reemplazar por la foto real
 };
 
 export const TEAM = [
-  { name: "Emi", role: "Acupuntor · medicina tradicional china", reelUrl: INSTAGRAM_URL },
-  { name: "Ceci", role: "Cosmetóloga", reelUrl: INSTAGRAM_URL },
-  { name: "Cristian", role: "Profe de Educación Física", reelUrl: INSTAGRAM_URL },
-  { name: "Doc. Liliana Liloff", role: "Medicina estética", reelUrl: INSTAGRAM_URL },
-  ...Array.from({ length: 6 }, () => ({ name: "Nombre", role: "Rol en Espacio NM", reelUrl: INSTAGRAM_URL })), // TODO: 6 personas restantes
+  { name: "Emi", role: "Acupuntor · medicina tradicional china", reelUrl: INSTAGRAM_URL, photo: "/photos/emi-acupuntor.png" },
+  { name: "Ceci", role: "Cosmetóloga", reelUrl: INSTAGRAM_URL, photo: "/photos/ceci-cosmetologa.png" },
+  { name: "Cristian", role: "Profe de Educación Física", reelUrl: INSTAGRAM_URL, photo: "/photos/cristian-profe.png" },
+  { name: "Doc. Liliana Liloff", role: "Medicina estética", reelUrl: INSTAGRAM_URL, photo: "/photos/doc-liloff-medicina-estetica.png" },
+  ...Array.from({ length: 1 }, () => ({ name: "Nombre", role: "Rol en Espacio NM", reelUrl: INSTAGRAM_URL, photo: "/photos/profesional-extra.png" })), // TODO: personas restantes
 ];
 
 // Textuales, con su ortografía original. Exactamente 3.

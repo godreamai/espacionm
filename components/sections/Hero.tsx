@@ -25,12 +25,15 @@ export function Hero() {
             />
             <div className="nm-hero__foot">
               <p className="nm-lead">
-                Estética, spa y movimiento en Caballito: un lugar para cuidarte con profesionales de verdad, en una casa cálida pensada para desconectar.
+                Cuerpo, rostro, spa y movimiento bajo un mismo techo: una casa reciclada de Caballito, con jardín, donde cuidarte sin apuro.
               </p>
               <div className="nm-hero__cta">
                 <WhatsAppButton size="lg" />
                 <Button variant="ghost" href="#bodywrap" iconRight="arrow-right">Conocé el Bodywrap</Button>
               </div>
+              <p className="nm-hero__rating">
+                <span aria-hidden="true">★</span> 4,7 <span className="nm-hero__rating-sep" aria-hidden="true" /> 107 reseñas en Google
+              </p>
             </div>
           </div>
 
@@ -39,11 +42,11 @@ export function Hero() {
               <MediaPlaceholder
                 shape="arch"
                 ratio="5/7"
-                src="/photos/espacio-recepcion-living.jpg"
-                position="40% 50%"
-                alt="Living de recepción con sofá blanco, almohadones bordados, sillón claro, mesa de madera y parquet"
+                src="/photos/hero.png"
+                position="60% 70%"
+                alt="Rincón de recepción con sofá de lino, mesa baja de madera, un tulipán rosa y luz de ventana"
                 status="pendiente"
-                statusLabel="Foto de clienta · solo demo interna"
+                statusLabel="Imagen generada · provisoria"
                 sizes="(min-width: 1024px) 420px, 80vw"
                 priority
               />
@@ -60,7 +63,6 @@ export function Hero() {
                 />
               </div>
             )}
-            <Image src="/tulip-from-logo.png" alt="" width={72} height={70} className="nm-hero__tulip h-auto" />
           </div>
         </div>
       </div>

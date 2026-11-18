@@ -11,7 +11,6 @@ export function Services() {
           <SectionHeading
             id="sv-title"
             className="nm-svc__title"
-            eyebrow="Servicios"
             title={<>Cuidado para cuerpo, <em>rostro</em> y descanso.</>}
           />
           <p className="nm-svc__intro">
