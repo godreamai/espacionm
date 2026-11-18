@@ -305,8 +305,9 @@
   .nm-bw__claims li { display: flex; gap: 14px; }
   .nm-bw__claims li::before { content: ""; flex: none; width: 14px; height: 1px; background: var(--nm-pink); margin-top: .8em; }
   .nm-bw__claims small { font-size: 14px; line-height: 1.55; color: var(--text-on-deep-muted); }
-  .nm-bw__foot { margin-top: clamp(40px, 5vw, 64px); padding-top: 32px; border-top: 1px solid var(--border-on-deep); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; }
-  .nm-bw__quote { margin: 0; max-width: 24ch; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); line-height: 1.14; color: var(--nm-white); text-wrap: balance; }
+  .nm-bw__foot { margin-top: clamp(40px, 5vw, 64px); padding-top: 32px; border-top: 1px solid var(--border-on-deep); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+  .nm-bw__foot > div { justify-content: center; }
+  .nm-bw__quote { margin: 0 auto; max-width: 24ch; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); line-height: 1.14; color: var(--nm-white); text-wrap: balance; }
   .nm-bw__cite { margin-top: 14px; font-size: 14px; color: var(--text-on-deep-muted); }
   @media (min-width: 1024px) {
     .nm-bw { padding: 88px 0 72px; }
@@ -630,5 +631,14 @@
     .nm-footer__brand { align-items: center; }
     .nm-footer__list--cols { justify-items: center; }
     .nm-footer__legal > div { justify-content: center; text-align: center; }
+  }
+}
+
+/* Servicios (mobile/tablet): las pestañas quedan fijas bajo el header mientras dure la sección,
+   así no hace falta subir para cambiar de categoría. Se liberan solas al terminar el bloque. */
+@layer components {
+  @media (max-width: 1023px) {
+    .nm-svc__tabs { position: sticky; top: var(--header-h); z-index: 30; background: var(--surface-page); margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+    .nm-svc__tab { padding-block: 10px; }
   }
 }

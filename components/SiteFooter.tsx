@@ -1,4 +1,3 @@
-import { WhatsAppButton } from "./Button";
 import { Logo } from "./Logo";
 import { TulipDivider } from "./TulipLine";
 import { FOOTER_LINKS, HOURS, INSTAGRAM_URL, MAPS_URL, WHATSAPP_PLAIN_URL } from "@/lib/data";
@@ -14,7 +13,6 @@ export function SiteFooter() {
         <div className="nm-footer__brand">
           <Logo width={200} />
           <p className="nm-footer__slogan">Tu espacio, tu bienestar.</p>
-          <WhatsAppButton variant="on-deep" size="sm" />
         </div>
 
         <nav aria-label="Secciones">
